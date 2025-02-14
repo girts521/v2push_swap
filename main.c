@@ -62,8 +62,9 @@ int main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
+	instructions = NULL;
 	if (argc < 2)
-	error();
+		error();
 	parse_args(argc, argv, &a);
 	if (a == NULL)
 		return (0);
@@ -76,10 +77,10 @@ int main(int argc, char **argv)
 		push_swap(&a, &b, &instructions);
 	// print_stack(a);
 	optimize(&instructions);
-	// while (instructions != NULL)
-	// {
-	// 	ft_printf("%s\n", instructions->value);
-	// 	instructions = instructions->next;
-	// }
+	while (instructions != NULL)
+	{
+		ft_printf("%s\n", instructions->value);
+		instructions = instructions->next;
+	}
 	return (1);
 }
