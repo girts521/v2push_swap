@@ -6,7 +6,7 @@
 /*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 09:28:25 by girts             #+#    #+#             */
-/*   Updated: 2025/02/14 15:43:46 by gikarcev         ###   ########.fr       */
+/*   Updated: 2025/02/19 18:03:39 by gikarcev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void merge_op(t_instructions **instructions)
             new_node = create_new_node("pb");
             add_after(instructions, new_node, after);            // Add PB
             current_node = new_node->next; // Continue from the node after PB
-            ft_printf("merged\n");
+            // ft_printf("merged\n");
         }
         else if (ft_strncmp(current_node->value, "rb", ft_strlen("rb")) == 0 && 
                  ft_strncmp(current_node->next->value, "pa", ft_strlen("pa")) == 0 && 
@@ -57,7 +57,7 @@ void merge_op(t_instructions **instructions)
             new_node = create_new_node("pa");
             add_after(instructions, new_node, after);           // Add PA
             current_node = new_node->next; // Continue from the node after PA
-            ft_printf("merged\n");
+            // ft_printf("merged\n");
         }
         else
         {
@@ -91,7 +91,7 @@ void merge_op2(t_instructions **instructions)
             add_after(instructions, new_node, after);          
             after = new_node;
             current_node = new_node->next;
-            ft_printf("merged2\n");
+            // ft_printf("merged2\n");
         }
         else if ((ft_strncmp(current_node->value, "ra", ft_strlen("ra")) == 0 && 
                  ft_strncmp(current_node->next->value, "rb", ft_strlen("rb")) == 0) \
@@ -105,7 +105,7 @@ void merge_op2(t_instructions **instructions)
             add_after(instructions, new_node, after); 
             after = new_node;
             current_node = new_node->next;
-            ft_printf("merged2\n");
+            // ft_printf("merged2\n");
         }
         else
         {
@@ -134,7 +134,7 @@ void merge_op3(t_instructions **instructions)
             add_after(instructions, new_node, after);          
             after = new_node;
             current_node = new_node->next;
-            ft_printf("merged3\n");
+            // ft_printf("merged3\n");
         }
         else
         {

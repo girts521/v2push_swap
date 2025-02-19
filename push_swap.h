@@ -44,5 +44,10 @@ void add_new_node(t_instructions **instructions, t_instructions *new_node);
 void remove_node(t_instructions **instructions, t_instructions *node);
 void add_after(t_instructions **instructions, t_instructions *new_node, t_instructions *after);
 void optimize(t_instructions **instructions);
+t_list	**quick_sort(t_list **list, int left, int right);
+t_list	*get_node_at_index(t_list **list, int index, t_list **prev);
+void	index_list(t_list **original, t_list **sorted);
+void	copy_list(t_list *original, t_list **copy);
+void print_stack(t_list *stack);
 
 #endif

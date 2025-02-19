@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: girts <girts@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:12:44 by girts             #+#    #+#             */
-/*   Updated: 2025/02/12 11:38:09 by girts            ###   ########.fr       */
+/*   Updated: 2025/02/19 18:24:53 by gikarcev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,19 @@ void push_swap(t_list **a, t_list **b, t_instructions **instructions)
 {
     int lst_size;
     t_list *smallest;
+    t_list *sorted;
 
+    sorted = NULL;
     lst_size = ft_lstsize(*a);
+    //make a copy of a
+    copy_list(*a, &sorted);
+    // print_stack(sorted);
+    // sort the copy
+    quick_sort(&sorted, 0, lst_size - 1);
+    
+    // index it
+    index_list(a, &sorted);
+    // print_stack(*a);
     while(lst_size > 3)
     {
         pb(a, b, instructions, 1);

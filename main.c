@@ -7,7 +7,7 @@ void print_stack(t_list *stack)
 	ft_printf("Printing stack\n");
 	while(current_node)
 	{
-		ft_printf("%d\n", current_node->value);
+		ft_printf("%d\n", current_node->final_index);
 		current_node = current_node->next;
 	}
 }
@@ -77,10 +77,19 @@ int main(int argc, char **argv)
 		push_swap(&a, &b, &instructions);
 	// print_stack(a);
 	optimize(&instructions);
-	while (instructions != NULL)
-	{
-		ft_printf("%s\n", instructions->value);
-		instructions = instructions->next;
-	}
+	// while (instructions != NULL)
+	// {
+	// 	ft_printf("%s\n", instructions->value);
+	// 	instructions = instructions->next;
+	// }
+	// print_stack(a);
+	if (is_sorted(a))
+		ft_printf("Is sorted");
 	return (1);
 }
+
+//sort the list a
+// index like in radix sort and assign the index to list a without changing its order
+//now you know the index where each node should be
+//if the node is upper median push to b else leave in a(maybe just rotate up or something)
+//
