@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/03 15:58:07 by gikarcev          #+#    #+#             */
+/*   Updated: 2025/03/03 15:59:20 by gikarcev         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	is_sorted(t_list *list)
@@ -104,4 +116,3 @@ t_list	*remove_last(t_list **list)
 	previous_node->next = NULL;
 	return (last_node);
 }
-

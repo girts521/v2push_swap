@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: girts <girts@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 17:36:41 by gikarcev          #+#    #+#             */
-/*   Updated: 2025/02/20 11:18:20 by girts            ###   ########.fr       */
+/*   Updated: 2025/03/03 15:11:45 by gikarcev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	copy_list(t_list *original, t_list **copy)
 	while (current_node != NULL)
 	{
 		new_node = ft_lstnew(current_node->value);
-		// ft_printf("new node: %d\n", new_node->value);
 		ft_lstadd_back(copy, new_node);
 		current_node = current_node->next;
 	}

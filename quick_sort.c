@@ -6,15 +6,11 @@
 /*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 16:55:01 by gikarcev          #+#    #+#             */
-/*   Updated: 2025/02/19 16:58:19 by gikarcev         ###   ########.fr       */
+/*   Updated: 2025/03/03 15:56:01 by gikarcev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
-
-// #TODO:
-// this needs to be adjusted to doubly linked list
 
 static void	swap(t_list **list, int index1, int index2)
 {

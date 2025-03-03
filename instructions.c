@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   instructions.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/03 15:30:17 by gikarcev          #+#    #+#             */
+/*   Updated: 2025/03/03 15:31:54 by gikarcev         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 //  If there are 2 numbers, swap the first 2 elements at the top of the stack a.
 void	sa(t_list **a, t_instructions **instructions, int add)
 {
-	t_list	*head;
-	t_list	*new_head;
-	t_instructions *new_node;
+	t_list			*head;
+	t_list			*new_head;
+	t_instructions	*new_node;
 
 	new_node = NULL;
 	if (*a && (*a)->next)
@@ -26,7 +38,7 @@ void	sa(t_list **a, t_instructions **instructions, int add)
 // If there are 2 numbers, swap the first 2 elements at the top of the stack b.
 void	sb(t_list **b, t_instructions **instructions, int add)
 {
-	t_instructions *new_node;
+	t_instructions	*new_node;
 
 	new_node = NULL;
 	sa(b, instructions, 0);
@@ -40,7 +52,7 @@ void	sb(t_list **b, t_instructions **instructions, int add)
 // sa and sb at the same time. 
 void	ss(t_list **a, t_list **b, t_instructions **instructions, int add)
 {
-	t_instructions *new_node;
+	t_instructions	*new_node;
 
 	new_node = NULL;
 	sa(a, instructions, 0);
@@ -55,8 +67,8 @@ void	ss(t_list **a, t_list **b, t_instructions **instructions, int add)
 //  If b is not empty it takes the first element on top of b and puts it on a.
 void	pa(t_list **a, t_list **b, t_instructions **instructions, int add)
 {
-	t_list	*head;
-	t_instructions *new_node;
+	t_list			*head;
+	t_instructions	*new_node;
 
 	new_node = NULL;
 	if (*b)
@@ -74,8 +86,8 @@ void	pa(t_list **a, t_list **b, t_instructions **instructions, int add)
 //  If a is not empty, it takes the first element on top of a and puts it on b.
 void	pb(t_list **a, t_list **b, t_instructions **instructions, int add)
 {
-	t_list	*head;
-	t_instructions *new_node;
+	t_list			*head;
+	t_instructions	*new_node;
 
 	new_node = NULL;
 	if (*a)
@@ -94,8 +106,8 @@ void	pb(t_list **a, t_list **b, t_instructions **instructions, int add)
 //  The first element becomes the last. 
 void	ra(t_list **a, t_instructions **instructions, int add)
 {
-	t_list	*head;
-	t_instructions *new_node;
+	t_list			*head;
+	t_instructions	*new_node;
 
 	new_node = NULL;
 	head = ft_pop(a);
@@ -111,7 +123,7 @@ void	ra(t_list **a, t_instructions **instructions, int add)
 //  The first element becomes the last one. 
 void	rb(t_list **b, t_instructions **instructions, int add)
 {
-	t_instructions *new_node;
+	t_instructions	*new_node;
 
 	new_node = NULL;
 	ra(b, instructions, 0);
@@ -125,7 +137,7 @@ void	rb(t_list **b, t_instructions **instructions, int add)
 // ra and rb at the same time. 
 void	rr(t_list **a, t_list **b, t_instructions **instructions, int add)
 {
-	t_instructions *new_node;
+	t_instructions	*new_node;
 
 	new_node = NULL;
 	ra(a, instructions, 0);
@@ -141,8 +153,8 @@ void	rr(t_list **a, t_list **b, t_instructions **instructions, int add)
 // the stack a. The last element becomes the first. 
 void	rra(t_list **a, t_instructions **instructions, int add)
 {
-	t_list	*last;
-	t_instructions *new_node;
+	t_list			*last;
+	t_instructions	*new_node;
 
 	new_node = NULL;
 	last = remove_last(a);
@@ -158,7 +170,7 @@ void	rra(t_list **a, t_instructions **instructions, int add)
 // the stack b. The last element becomes the first. 
 void	rrb(t_list **b, t_instructions **instructions, int add)
 {
-	t_instructions *new_node;
+	t_instructions	*new_node;
 
 	new_node = NULL;
 	rra(b, instructions, 0);
@@ -172,7 +184,7 @@ void	rrb(t_list **b, t_instructions **instructions, int add)
 // rra and rrb at the same time.
 void	rrr(t_list **a, t_list **b, t_instructions **instructions, int add)
 {
-	t_instructions *new_node;
+	t_instructions	*new_node;
 
 	new_node = NULL;
 	rra(a, instructions, 0);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_small.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/03 15:56:22 by gikarcev          #+#    #+#             */
+/*   Updated: 2025/03/03 15:57:51 by gikarcev         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	sort_three(t_list **list, t_instructions **instructions)
@@ -5,7 +17,7 @@ int	sort_three(t_list **list, t_instructions **instructions)
 	t_list	*top;
 	t_list	*middle;
 	t_list	*bottom;
-	
+
 	if (is_sorted(*list))
 		return (1);
 	top = *list;
@@ -34,7 +46,7 @@ int	sort_three(t_list **list, t_instructions **instructions)
 	{
 		if (bottom->value > top->value)
 		{
-			sa(list,instructions, 1);
+			sa(list, instructions, 1);
 			ra(list, instructions, 1);
 			return (1);
 		}
