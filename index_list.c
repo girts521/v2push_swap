@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   index_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
+/*   By: girts <girts@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 17:36:41 by gikarcev          #+#    #+#             */
-/*   Updated: 2025/02/19 18:29:03 by gikarcev         ###   ########.fr       */
+/*   Updated: 2025/02/20 11:18:20 by girts            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	index_list(t_list **original, t_list **sorted)
 		while (current_sorted != NULL)
 		{
 			if (current_original->value == current_sorted->value)
-				current_original->final_index = count;
+				current_original->value = count;
 			count++;
 			current_sorted = current_sorted->next;
 		}

@@ -6,7 +6,7 @@
 /*   By: girts <girts@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 15:49:56 by girts             #+#    #+#             */
-/*   Updated: 2025/02/12 10:53:33 by girts            ###   ########.fr       */
+/*   Updated: 2025/02/20 18:52:11 by girts            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,3 +69,4 @@ void move_nodes(t_list **a, t_list **b,  t_instructions **instructions)
     finish_rotation(a, b, instructions, cheapest_node);
     pa(a, b, instructions, 1);
 }
+

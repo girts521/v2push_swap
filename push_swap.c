@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
+/*   By: girts <girts@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:12:44 by girts             #+#    #+#             */
-/*   Updated: 2025/02/19 18:24:53 by gikarcev         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:10:27 by girts            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_list *find_smallest(t_list *stack)
 
 void push_swap(t_list **a, t_list **b, t_instructions **instructions)
 {
-    int lst_size;
+    int     lst_size;
     t_list *smallest;
     t_list *sorted;
 
@@ -53,6 +53,7 @@ void push_swap(t_list **a, t_list **b, t_instructions **instructions)
         lst_size = ft_lstsize(*a);
     }
     sort_small(a, b, instructions, ft_lstsize(*a));
+    
     while (*b)
 	{
 		init_nodes(*a, *b);
