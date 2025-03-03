@@ -6,7 +6,7 @@
 /*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:12:44 by girts             #+#    #+#             */
-/*   Updated: 2025/03/03 15:48:10 by gikarcev         ###   ########.fr       */
+/*   Updated: 2025/03/03 17:10:16 by gikarcev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,22 @@ t_list	*find_smallest(t_list *stack)
 	return (smallest);
 }
 
+void	rotate_a(t_list **a, t_instructions **instructions)
+{
+	t_list	*smallest;
+
+	smallest = find_smallest(*a);
+	if (smallest->above_median)
+		while (*a != smallest)
+			ra(a, instructions, 1);
+	else
+		while (*a != smallest)
+			rra(a, instructions, 1);
+}
+
 void	push_swap(t_list **a, t_list **b, t_instructions **instructions)
 {
 	int		lst_size;
-	t_list	*smallest;
 	t_list	*sorted;
 
 	sorted = NULL;
@@ -52,11 +64,5 @@ void	push_swap(t_list **a, t_list **b, t_instructions **instructions)
 		move_nodes(a, b, instructions);
 	}
 	set_current_position(*a);
-	smallest = find_smallest(*a);
-	if (smallest->above_median)
-		while (*a != smallest)
-			ra(a, instructions, 1);
-	else
-		while (*a != smallest)
-			rra(a, instructions, 1);
+	rotate_a(a, instructions);
 }

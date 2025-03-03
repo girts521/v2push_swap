@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   init_nodes_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/20 11:43:05 by gkarcevs          #+#    #+#             */
-/*   Updated: 2025/03/03 17:32:26 by gikarcev         ###   ########.fr       */
+/*   Created: 2025/03/03 16:26:08 by gikarcev          #+#    #+#             */
+/*   Updated: 2025/03/03 16:26:51 by gikarcev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "push_swap.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	find_target(t_list	*stack_a, t_list *b, \
+	long *best_match, t_list **target_node)
 {
-	t_list	*current_node;
-
-	if (!lst || !new)
-		return ;
-	if (*lst == NULL)
-		*lst = new;
-	else
+	while (stack_a)
 	{
-		current_node = *lst;
-		while (current_node->next != NULL)
-			current_node = current_node->next;
-		current_node->next = new;
+		if (stack_a->value > b->value && stack_a->value < (*best_match))
+		{
+			*best_match = stack_a->value;
+			*target_node = stack_a;
+		}
+		stack_a = stack_a->next;
 	}
 }

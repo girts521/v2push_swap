@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: girts <girts@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 19:26:31 by girts             #+#    #+#             */
-/*   Updated: 2025/02/20 19:29:09 by girts            ###   ########.fr       */
+/*   Updated: 2025/03/03 16:34:03 by gikarcev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,16 @@ void	parse_args(int argc, char **argv, t_list **a)
 	}
 }
 
+void	optimize_and_print(t_instructions	*instructions)
+{
+	optimize(&instructions);
+	while (instructions != NULL)
+	{
+		ft_printf("%s\n", instructions->value);
+		instructions = instructions->next;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_list			*a;
@@ -86,11 +96,6 @@ int	main(int argc, char **argv)
 		sort_small(&a, &b, &instructions, length);
 	else
 		push_swap(&a, &b, &instructions);
-	optimize(&instructions);
-	while (instructions != NULL)
-	{
-		ft_printf("%s\n", instructions->value);
-		instructions = instructions->next;
-	}
+	optimize_and_print(instructions);
 	return (1);
 }

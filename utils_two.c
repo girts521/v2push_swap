@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   utils_two.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/20 11:43:05 by gkarcevs          #+#    #+#             */
-/*   Updated: 2025/03/03 17:32:26 by gikarcev         ###   ########.fr       */
+/*   Created: 2025/03/03 17:30:36 by gikarcev          #+#    #+#             */
+/*   Updated: 2025/03/03 17:30:49 by gikarcev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "push_swap.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+t_list	*remove_last(t_list **list)
 {
-	t_list	*current_node;
+	t_list	*last_node;
+	t_list	*previous_node;
 
-	if (!lst || !new)
-		return ;
-	if (*lst == NULL)
-		*lst = new;
-	else
+	if (!list)
+		return (NULL);
+	if (*list == NULL)
+		return (*list);
+	last_node = *list;
+	previous_node = *list;
+	while (last_node->next != NULL)
 	{
-		current_node = *lst;
-		while (current_node->next != NULL)
-			current_node = current_node->next;
-		current_node->next = new;
+		previous_node = last_node;
+		last_node = last_node->next;
 	}
+	previous_node->next = NULL;
+	return (last_node);
 }

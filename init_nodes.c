@@ -6,7 +6,7 @@
 /*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:32:34 by girts             #+#    #+#             */
-/*   Updated: 2025/03/03 15:20:25 by gikarcev         ###   ########.fr       */
+/*   Updated: 2025/03/03 16:26:49 by gikarcev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	set_current_position(t_list *stack)
 	}
 }
 
-// need to remove 5 lines
 void	set_target_node(t_list *a, t_list *b)
 {
 	long	best_match;
@@ -49,15 +48,7 @@ void	set_target_node(t_list *a, t_list *b)
 	{
 		stack_a = a;
 		best_match = LONG_MAX;
-		while (stack_a)
-		{
-			if (stack_a->value > b->value && stack_a->value < best_match)
-			{
-				best_match = stack_a->value;
-				target_node = stack_a;
-			}
-			stack_a = stack_a->next;
-		}
+		find_target(stack_a, b, &best_match, &target_node);
 		if (best_match == LONG_MAX)
 			b->target_node = find_smallest(a);
 		else

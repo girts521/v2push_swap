@@ -6,7 +6,7 @@
 /*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 18:41:27 by girts             #+#    #+#             */
-/*   Updated: 2025/03/03 15:29:45 by gikarcev         ###   ########.fr       */
+/*   Updated: 2025/03/03 16:31:13 by gikarcev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,19 @@ void	add_after(t_instructions **instructions, \
 	current_node->next = new_node;
 	if (new_node->next != NULL)
 		new_node->next->prev = new_node;
+}
+
+// rra and rrb at the same time.
+void	rrr(t_list **a, t_list **b, t_instructions **instructions, int add)
+{
+	t_instructions	*new_node;
+
+	new_node = NULL;
+	rra(a, instructions, 0);
+	rrb(b, instructions, 0);
+	if (add == 1)
+	{
+		new_node = create_new_node("rrr");
+		add_new_node(instructions, new_node);
+	}
 }

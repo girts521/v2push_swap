@@ -6,58 +6,11 @@
 /*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:56:22 by gikarcev          #+#    #+#             */
-/*   Updated: 2025/03/03 15:57:51 by gikarcev         ###   ########.fr       */
+/*   Updated: 2025/03/03 17:21:00 by gikarcev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	sort_three(t_list **list, t_instructions **instructions)
-{
-	t_list	*top;
-	t_list	*middle;
-	t_list	*bottom;
-
-	if (is_sorted(*list))
-		return (1);
-	top = *list;
-	middle = top->next;
-	bottom = middle->next;
-	if (top->value > middle->value)
-	{
-		if (middle->value > bottom->value)
-		{
-			sa(list, instructions, 1);
-			rra(list, instructions, 1);
-			return (1);
-		}
-		else if (bottom->value > top->value)
-		{
-			sa(list, instructions, 1);
-			return (1);
-		}
-		else if (bottom->value < top->value)
-		{
-			ra(list, instructions, 1);
-			return (1);
-		}
-	}
-	else if (top->value < middle->value)
-	{
-		if (bottom->value > top->value)
-		{
-			sa(list, instructions, 1);
-			ra(list, instructions, 1);
-			return (1);
-		}
-		else if (bottom->value < top->value)
-		{
-			rra(list, instructions, 1);
-			return (1);
-		}
-	}
-	return (0);
-}
 
 int	find_min_position(t_list *lst)
 {

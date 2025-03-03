@@ -6,7 +6,8 @@ INCLUDES = -I$(LIBFT_DIR)
 
 SRCS = main.c utils.c error.c sort_small.c instructions.c init_nodes.c \
 		move_nodes.c push_swap.c instructions_utils.c optimize.c quick_sort.c \
-		quick_sort_utils.c index_list.c
+		quick_sort_utils.c index_list.c init_nodes_utils.c instructions_two.c \
+		optimize_utils.c sort_three.c utils_two.c
 
 OBJS  :=  $(SRCS:.c=.o)
 

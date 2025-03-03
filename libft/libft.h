@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: girts521 <girts521@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:34:10 by girts             #+#    #+#             */
-/*   Updated: 2024/06/22 12:19:24 by girts521         ###   ########.fr       */
+/*   Updated: 2025/03/03 17:32:58 by gikarcev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ typedef struct s_list
 	int					push_price;
 	bool				above_median;
 	bool				cheapest;
-	struct s_list	*target_node;
-	struct s_list	*next;
-	struct s_list	*prev;
+	struct s_list		*target_node;
+	struct s_list		*next;
+	struct s_list		*prev;
 }				t_list;
 
 typedef void	(*t_format_handler)(va_list ap, int *i);
@@ -41,7 +41,6 @@ typedef struct t_format_specifier
 	char				specifier;
 	t_format_handler	handler;
 }	t_format_specifier;
-
 
 int		ft_strlen(const char *str);
 int		ft_toupper(int c);

@@ -6,7 +6,7 @@
 /*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:51:08 by gikarcev          #+#    #+#             */
-/*   Updated: 2025/03/03 15:54:50 by gikarcev         ###   ########.fr       */
+/*   Updated: 2025/03/03 17:22:57 by gikarcev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int				validate_digits(char *str);
 void			free_args(char	**args);
 void			check_double_number(int content, t_list *result);
 void			error(void);
+int				sort_three(t_list **list, t_instructions **instructions);
 int				sort_small(t_list **a, t_list **b, \
 							t_instructions **instructions, int size);
 int				is_sorted(t_list *list);
@@ -71,5 +72,11 @@ t_list			*get_node_at_index(t_list **list, int index, t_list **prev);
 void			index_list(t_list **original, t_list **sorted);
 void			copy_list(t_list *original, t_list **copy);
 void			print_stack(t_list *stack);
+void			find_target(t_list	*stack_a, t_list *b, \
+							long *best_match, t_list **target_node);
+void			remove_three(t_instructions *current_node, \
+					t_instructions **instructions, char *node1, char *node2);
+void			remove_two(t_instructions *current_node, \
+						t_instructions **instructions, char *node1);
 
 #endif
