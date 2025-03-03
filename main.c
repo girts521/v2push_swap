@@ -6,7 +6,7 @@
 /*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 19:26:31 by girts             #+#    #+#             */
-/*   Updated: 2025/03/03 16:34:03 by gikarcev         ###   ########.fr       */
+/*   Updated: 2025/03/03 17:53:00 by gikarcev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,16 @@ void	parse_args(int argc, char **argv, t_list **a)
 
 void	optimize_and_print(t_instructions	*instructions)
 {
+	t_instructions *next_node;
+
 	optimize(&instructions);
 	while (instructions != NULL)
 	{
+		next_node = instructions->next;
 		ft_printf("%s\n", instructions->value);
-		instructions = instructions->next;
+		free(instructions->value);
+		free(instructions);
+		instructions = next_node;
 	}
 }
 
@@ -97,5 +102,8 @@ int	main(int argc, char **argv)
 	else
 		push_swap(&a, &b, &instructions);
 	optimize_and_print(instructions);
+	ft_lstclear(&a, NULL);
+	ft_lstclear(&b, NULL);
+	// ft_lstclear(&instructions, NULL);
 	return (1);
 }

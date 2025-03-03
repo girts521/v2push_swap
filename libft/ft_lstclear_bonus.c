@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: girts <girts@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 13:48:15 by gkarcevs          #+#    #+#             */
-/*   Updated: 2025/02/10 11:09:21 by girts            ###   ########.fr       */
+/*   Updated: 2025/03/03 17:45:40 by gikarcev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	while (current_node != NULL)
 	{
 		next_node = current_node->next;
-		del(&current_node->value);
+		if (del != NULL)
+			del(&current_node->value);
 		free(current_node);
 		current_node = next_node;
 	}
