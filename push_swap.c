@@ -6,7 +6,7 @@
 /*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 13:12:44 by girts             #+#    #+#             */
-/*   Updated: 2025/03/03 17:58:03 by gikarcev         ###   ########.fr       */
+/*   Updated: 2025/03/03 18:12:08 by gikarcev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	push_swap(t_list **a, t_list **b, t_instructions **instructions)
 	quick_sort(&sorted, 0, lst_size - 1);
 	index_list(a, &sorted);
 	ft_lstclear(&sorted, NULL);
+	free(sorted);
 	while (lst_size > 3)
 	{
 		pb(a, b, instructions, 1);

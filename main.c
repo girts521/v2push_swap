@@ -6,7 +6,7 @@
 /*   By: gikarcev <gikarcev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 19:26:31 by girts             #+#    #+#             */
-/*   Updated: 2025/03/03 17:53:00 by gikarcev         ###   ########.fr       */
+/*   Updated: 2025/03/03 18:12:33 by gikarcev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,9 @@ int	main(int argc, char **argv)
 	optimize_and_print(instructions);
 	ft_lstclear(&a, NULL);
 	ft_lstclear(&b, NULL);
+	free(a);
+	free(b);
+	free(instructions);
 	// ft_lstclear(&instructions, NULL);
 	return (1);
 }
