@@ -21,6 +21,13 @@ t_list	*ft_lstnew(int value)
 	if (!node)
 		return (NULL);
 	node->value = value;
+	node->current_position = 0;
+	node->final_index = 0;
+	node->push_price = 0;
+	node->above_median = false;
+	node->cheapest = false;
+	node->target_node = NULL;
+	node->prev = NULL;
 	node->next = NULL;
 	return (node);
 }

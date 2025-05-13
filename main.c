@@ -64,18 +64,20 @@ void	parse_args(int argc, char **argv, t_list **a)
 	}
 }
 
-void	optimize_and_print(t_instructions	*instructions)
+void	optimize_and_print(t_instructions	**instructions)
 {
+	t_instructions *current_node;
 	t_instructions *next_node;
 
-	optimize(&instructions);
-	while (instructions != NULL)
+	current_node = *instructions;
+	// optimize(instructions);
+	while (current_node != NULL)
 	{
-		next_node = instructions->next;
-		ft_printf("%s\n", instructions->value);
-		free(instructions->value);
-		free(instructions);
-		instructions = next_node;
+		next_node = current_node->next;
+		ft_printf("%s\n", current_node->value);
+		free(current_node->value);
+		free(current_node);
+		current_node = next_node;
 	}
 }
 
@@ -101,12 +103,13 @@ int	main(int argc, char **argv)
 		sort_small(&a, &b, &instructions, length);
 	else
 		push_swap(&a, &b, &instructions);
-	optimize_and_print(instructions);
+	optimize_and_print(&instructions);
 	ft_lstclear(&a, NULL);
 	ft_lstclear(&b, NULL);
 	free(a);
 	free(b);
-	free(instructions);
+	// ft_lstclear(instructions, NULL);
+	// // free(instructions);
 	// ft_lstclear(&instructions, NULL);
 	return (1);
 }
