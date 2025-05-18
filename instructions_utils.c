@@ -61,7 +61,7 @@ void	add_new_node(t_instructions **instructions, t_instructions *new_node)
 		return ;
 	if (*instructions == NULL)
 		*instructions = new_node;
-	else 
+	else
 	{
 		current_node = *instructions;
 		while (current_node->next != NULL)
@@ -88,7 +88,7 @@ void	remove_node(t_instructions **instructions, t_instructions *node)
 		*instructions = current_node->next;
 	if (current_node->next)
 		current_node->next->prev = current_node->prev;
-	free(current_node); 
+	free(current_node);
 }
 
 void	add_after(t_instructions **instructions, \

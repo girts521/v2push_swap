@@ -29,7 +29,8 @@ typedef struct s_instructions
 int				validate_digits(char *str);
 void			free_args(char	**args);
 void			check_double_number(int content, t_list *result);
-void			error(void);
+void			error(t_list *a, t_list *b);
+void			clean_up(t_list *a, t_list *b);
 int				sort_three(t_list **list, t_instructions **instructions);
 int				sort_small(t_list **a, t_list **b, \
 							t_instructions **instructions, int size);

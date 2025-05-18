@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 #include "push_swap.h"
 
 int	is_sorted(t_list *list)
@@ -37,7 +38,6 @@ int	validate_digits(char *str)
 	{
 		if (!ft_isdigit(str[i]) && str[i] != '-' && str[i] != '+')
 		{
-			error();
 			return (0);
 		}
 		if (str[i] == '-' || str[i] == '+')
@@ -45,7 +45,6 @@ int	validate_digits(char *str)
 			i++;
 			if (!ft_isdigit(str[i]))
 			{
-				error();
 				return (0);
 			}
 		}
@@ -61,7 +60,6 @@ void	free_args(char	**args)
 	i = 0;
 	while (args[i])
 	{
-		// if (args[i])
 		free(args[i]);
 		i++;
 	}
@@ -79,7 +77,7 @@ void	check_double_number(int content, t_list *result)
 	while (current_node != NULL)
 	{
 		if (current_node->value == content)
-			error();
+			error(result, NULL);
 		current_node = current_node->next;
 	}
 }

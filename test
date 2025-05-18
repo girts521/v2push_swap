@@ -1,0 +1,95 @@
+#! /bin/bash
+
+test_500() {
+	arg="$(shuf -i $1 | tr '\n' ' ')"
+
+	lines="$(./push_swap $arg | wc -l)"
+
+	echo -e "\e[1;32m The number of lines is: $lines\e[0m"
+
+	pass_fail="$(./push_swap $arg | ../checker_linux $arg)"
+
+	echo -e "\e[1;32mFinal grade is: $pass_fail\e[0m"
+
+	leaks="$(valgrind --leak-check=full ./push_swap $arg)"
+}
+
+test_small() {
+	arg=$1
+
+	lines="$(./push_swap $arg | wc -l)"
+
+	echo -e "\e[1;32m The number of lines is: $lines\e[0m"
+
+	pass_fail="$(./push_swap $arg | ../checker_linux $arg)"
+
+	echo -e "\e[1;32mFinal grade is: $pass_fail\e[0m"
+
+	leaks="$(valgrind --leak-check=full ./push_swap $arg)"
+}
+
+additional_tests() {
+	#Run tests with no input
+	echo -e "\e[3;34m=========================================================\e[0m"
+	echo -e "\e[1;32mRunning test with no input\e[0m"
+	test="$(./push_swap)"
+	echo $test
+	if [[ $test -eq "Error" ]]; then
+		echo -e "\e[1;32mTest passed\e[0m"
+	else
+		echo -e "\e[1;31mTest not passed\e[0m"
+	fi
+	leaks="$(valgrind --leak-check=full ./push_swap)"
+
+	#Run tests with already sorted input
+	echo -e "\e[3;34m=========================================================\e[0m"
+	echo -e "\e[1;32mRunning test with already sorted input\e[0m"
+	test="$(./push_swap 1 2 3 4 5 6 7 8 9)"
+	echo $test
+	if [[ $test == "" ]]; then
+		echo -e "\e[1;32mTest passed\e[0m"
+	else
+		echo -e "\e[1;31mTest not passed\e[0m"
+	fi
+	leaks="$(valgrind --leak-check=full ./push_swap 1 2 3 4 5 6 7 8 9)"
+
+	#Test sort 3
+	echo -e "\e[3;34m=========================================================\e[0m"
+	echo -e "\e[1;32mTest sort 3\e[0m"
+	test_small "2 1 4"
+
+	#Test sort 4
+	echo -e "\e[3;34m=========================================================\e[0m"
+	echo -e "\e[1;32mTest sort 4\e[0m"
+	test_small "2 1 4 44"
+
+	#Test sort 5
+	echo -e "\e[3;34m=========================================================\e[0m"
+	echo -e "\e[1;32mTest sort 5\e[0m"
+	test_small "2 1 4 44 55"
+
+	#Test with random wrong input
+	echo -e "\e[3;34m=========================================================\e[0m"
+	echo -e "\e[1;32mTest with random wrong input\e[0m"
+	test="$(./push_swap askdjfh shdjfh)"
+	echo $test
+	if [[ $test -eq "Error" ]]; then
+		echo -e "\e[1;32mTest passed\e[0m"
+	else
+		echo -e "\e[1;31mTest not passed\e[0m"
+	fi
+	leaks="$(valgrind --leak-check=full ./push_swap)"
+}
+
+echo -e "\e[3;34m=========================================================\e[0m"
+echo -e "\e[1;32mTesting with random numbers till 500\e[0m"
+test_500 "1-500"
+
+echo -e "\e[3;34m=========================================================\e[0m"
+echo -e "\e[1;32mTesting with random numbers till 100\e[0m"
+test_500 "1-100"
+
+if [[ -n "$1" && "$1" -eq 42 ]]; then
+	echo -e "\e[1;32mRuning additional tests\e[0m"
+	additional_tests 
+fi

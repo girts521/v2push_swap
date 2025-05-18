@@ -65,13 +65,11 @@ int	sort_three(t_list **list, t_instructions **instructions)
 {
 	t_list	*top;
 	t_list	*middle;
-	t_list	*bottom;
 
 	if (is_sorted(*list))
 		return (1);
 	top = *list;
 	middle = top->next;
-	bottom = middle->next;
 	if (top->value > middle->value)
 	{
 		top_higher(list, instructions);

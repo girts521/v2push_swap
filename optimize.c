@@ -22,10 +22,10 @@ void	merge_op(t_instructions **instructions)
 	current_node = *instructions;
 	while (current_node && current_node->next && current_node->next->next)
 	{
-		if (ft_strncmp(current_node->value, "ra", ft_strlen("ra")) == 0 && 
-			ft_strncmp(current_node->next->value, "pb", ft_strlen("pb")) == 0 \
-			&& ft_strncmp(current_node->next->next->value, "rra", \
-				ft_strlen("rra")) == 0)
+		if (ft_strncmp(current_node->value, "ra", ft_strlen("ra")) == 0 \
+			&& ft_strncmp(current_node->next->value, "pb", \
+			ft_strlen("pb")) == 0 && ft_strncmp(\
+				current_node->next->next->value, "rra", ft_strlen("rra")) == 0)
 		{
 			remove_three(current_node, instructions, "sa", "pb");
 		}
@@ -82,7 +82,7 @@ void	merge_op3(t_instructions **instructions)
 	current_node = *instructions;
 	while (current_node && current_node->next)
 	{
-		if (ft_strncmp(current_node->value, "rra", ft_strlen("rra")) == 0 && 
+		if (ft_strncmp(current_node->value, "rra", ft_strlen("rra")) == 0 && \
 			ft_strncmp(current_node->next->value, "rrb", ft_strlen("rrb")) == 0)
 		{
 			remove_two(current_node, instructions, "rrr");

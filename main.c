@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 #include "push_swap.h"
 
 // void print_stack(t_list *stack)
@@ -38,10 +39,15 @@ void	parse_add(char **args, t_list **a)
 		{
 			value = ft_atoi(args[i]);
 			if (value > INT_MAX || value < INT_MIN)
-				error();
+				error(*a, NULL);
 			check_double_number((int)value, *a);
 			new_node = ft_lstnew((int)value);
 			ft_lstadd_back(a, new_node);
+		}
+		else
+		{
+			free_args(args);
+			error(*a, NULL);
 		}
 		i++;
 	}
@@ -57,20 +63,20 @@ void	parse_args(int argc, char **argv, t_list **a)
 	{
 		args = ft_split(argv[i], ' ');
 		if (!args)
-			error();
+			error(*a, NULL);
 		parse_add(args, a);
 		free_args(args);
 		i++;
 	}
 }
 
-void	optimize_and_print(t_instructions	**instructions)
+void	optimize_and_print(t_instructions	**instructions, \
+							t_list *a, t_list *b)
 {
-	t_instructions *current_node;
-	t_instructions *next_node;
+	t_instructions	*current_node;
+	t_instructions	*next_node;
 
 	current_node = *instructions;
-	// optimize(instructions);
 	while (current_node != NULL)
 	{
 		next_node = current_node->next;
@@ -78,6 +84,21 @@ void	optimize_and_print(t_instructions	**instructions)
 		free(current_node->value);
 		free(current_node);
 		current_node = next_node;
+	}
+	clean_up(a, b);
+}
+
+void	clean_up(t_list *a, t_list *b)
+{
+	if (a)
+	{
+		ft_lstclear(&a, NULL);
+		free(a);
+	}
+	if (b)
+	{
+		ft_lstclear(&b, NULL);
+		free(b);
 	}
 }
 
@@ -92,24 +113,20 @@ int	main(int argc, char **argv)
 	b = NULL;
 	instructions = NULL;
 	if (argc < 2)
-		error();
+		error(a, b);
 	parse_args(argc, argv, &a);
 	if (a == NULL)
 		return (0);
 	if (is_sorted(a))
+	{
+		clean_up(a, b);
 		return (1);
+	}
 	length = ft_lstsize(a);
 	if (length <= 5)
 		sort_small(&a, &b, &instructions, length);
 	else
 		push_swap(&a, &b, &instructions);
-	optimize_and_print(&instructions);
-	ft_lstclear(&a, NULL);
-	ft_lstclear(&b, NULL);
-	free(a);
-	free(b);
-	// ft_lstclear(instructions, NULL);
-	// // free(instructions);
-	// ft_lstclear(&instructions, NULL);
+	optimize_and_print(&instructions, a, b);
 	return (1);
 }

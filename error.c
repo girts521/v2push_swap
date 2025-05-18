@@ -12,8 +12,9 @@
 
 #include "push_swap.h"
 
-void	error(void)
+void	error(t_list *a, t_list *b)
 {
 	ft_printf("Error\n");
+	clean_up(a, b);
 	exit(0);
 }
