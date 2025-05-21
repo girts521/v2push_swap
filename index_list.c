@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+//Does what it says, is used in a different file. (push_swap)
 void	copy_list(t_list *original, t_list **copy)
 {
 	t_list	*new_node;
@@ -26,6 +26,8 @@ void	copy_list(t_list *original, t_list **copy)
 	}
 }
 
+//Goes over the sorted list and changes the values of the 
+//original list with the index of its value in the sorted list
 void	index_list(t_list **original, t_list **sorted)
 {
 	t_list	*current_original;

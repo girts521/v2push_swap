@@ -12,6 +12,8 @@
 
 #include "push_swap.h"
 
+// Marks every node above_median (0 till size / 2)
+// and rest as below median
 void	set_current_position(t_list *stack)
 {
 	int		position;

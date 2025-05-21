@@ -13,28 +13,6 @@
 #include "push_swap.h"
 #include "string.h"
 
-// typedef struct s_instructions
-// {
-//     struct s_instructions  *next;
-//     struct s_instructions  *prev;
-//     char                   value[16];
-// }               s_instructions;
-
-// t_instructions *create_new_node(char *value)
-// {
-//     t_instructions *node;
-
-//     node = (t_instructions*)malloc(sizeof(t_instructions));
-//     if (!node)
-//         return (NULL);
-//     node->value = NULL;
-//     node->value = ft_strdup(value);
-//     node->value[sizeof(node->value) - 1] = '\0';
-//     node->next = NULL;
-//     node->prev = NULL;
-//     return (node);
-// }
-
 t_instructions	*create_new_node(char *value)
 {
 	t_instructions	*node;
